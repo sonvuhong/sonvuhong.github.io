@@ -27,7 +27,8 @@
     <!-- class, action, methodを変更しないでください -->
     <!-- class, action, methodを変更しないでください -->
     <!-- class, action, methodを変更しないでください -->
-  <form class="formrun" action="https://form.run/api/v1/r/9vln8v76ajr7yggn51g7krh2" method="post">
+    <!-- class, action, methodを変更しないでください -->
+  <form class="formrun" action="https://form.run/api/v1/r/re421ocwq92vn9r12wnkkx8x" method="post" enctype="multipart/form-data">
     <!-- ↓自由に要素を追加・編集することができます -->
     <div>
       <label>お名前</label>
@@ -36,7 +37,7 @@
 
     <div>
       <label>メールアドレス [必須]</label>
-      <input name="お名前" type="text" data-formrun-type="email" data-formrun-required>
+      <input name="メールアドレス" type="text" data-formrun-type="email" data-formrun-required>
       <div data-formrun-show-if-error="メールアドレス">メールアドレスを正しく入力してください</div>
     </div>
 
@@ -44,6 +45,9 @@
       <label>お問い合わせ [必須]</label>
       <textarea name="お問い合わせ" data-formrun-required></textarea>
       <div data-formrun-show-if-error="お問い合わせ">お問い合わせ入力してください</div>
+    </div>
+    <div>
+      <input type="file" name="添付ファイル">
     </div>
 
     <button type="submit" data-formrun-error-text="未入力の項目があります" data-formrun-submitting-text="送信中...">送信</button>
