@@ -26,21 +26,19 @@
     <script src="js/main.js"></script>
 
     <script>
-      $(function () {
-        var includes = $('[data-include]')
-        $.each(includes, function () {
-          var file = 'layout/' + $(this).data('include') + '.html'
-          $(this).load(file)
-        })
-      })
+      
+
+      $(function(){
+        $("#includedContent").load("layout/header.html");
+      });
     </script>
 
-    <div data-include="metadata"></div>
+    <!-- <div data-include="metadata"></div> -->
   </head>
-  
-  <body>
 
-    <div data-include="header"></div>
+  <body>
+    <div id="includedContent"></div>
+    <!-- <div data-include="header"></div> -->
     <!-- END header -->
 
     <section class="site-section pt-5">
