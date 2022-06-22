@@ -1,9 +1,9 @@
 <<head>
-  <script src="https://sdk-stg.form.run/js/v2/formrun.js"></script>
+  <script src="https://sdk.form.run/js/v2/formrun.js"></script>
 
 </head>
 <!-- class, action, methodを変更しないでください -->
-<form class="formrun" action="https://stg.form.run/api/v1/r/fy1kdvwlp29de0e9nc8y8xgu" method="post">
+<form class="formrun" action="https://form.run/api/v1/r/vwwwk01wq7du5jrau8865whw" method="post">
   <!-- ↓自由に要素を追加・編集することができます -->
   <div>
     <label>お名前</label>
@@ -23,15 +23,9 @@
   </div>
 
   <div>
-    <label>test 2</label>
-    <textarea name="test2"></textarea>
-    <div data-formrun-show-if-error="お問い合わせ">お問い合わせ入力してください</div>
-  </div>
-
-  <div>
-    <label>test 3</label>
-    <textarea name="test3"></textarea>
-    <div data-formrun-show-if-error="お問い合わせ">お問い合わせ入力してください</div>
+    <label>個人情報利用同意 [必須]</label>
+    <input type="checkbox" name="個人情報利用同意" data-formrun-required>
+    <div data-formrun-show-if-error="個人情報利用同意">同意してください</div>
   </div>
 
 
