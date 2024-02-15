@@ -1,14 +1,28 @@
 <div style="height: 20px; background-color: red">
   --------start--------
 </div>
-<div class="">
-  <script src="https://sdk-stg.form.run/js/v2/embed.js"></script>
-  <div
-    class="formrun-embed"
-    data-formrun-form="@sonvh-jKSvbj8IjnFqSDZm60i7"
-    data-formrun-redirect="true">
+<script src="https://sdk-stg.form.run/js/v2/formrun.js"></script>
+<form class="formrun" action="https://stg.form.run/api/v1/r/w28h2eqefh5sgfowgossco3h" method="post">
+  <!-- ↓自由に要素を追加・編集することができます -->
+  <div>
+    <label>お名前</label>
+    <input name="お名前" type="text">
   </div>
-</div>
+
+  <div>
+    <label>メールアドレス [必須]</label>
+    <input name="メールアドレス" type="text" data-formrun-type="email" data-formrun-required>
+    <div data-formrun-show-if-error="メールアドレス">メールアドレスを正しく入力してください</div>
+  </div>
+
+  <div>
+    <label>お問い合わせ [必須]</label>
+    <textarea name="お問い合わせ" data-formrun-required></textarea>
+    <div data-formrun-show-if-error="お問い合わせ">お問い合わせ内容を入力してください</div>
+  </div>
+
+  <button type="submit" data-formrun-error-text="未入力の項目があります" data-formrun-submitting-text="送信中...">送信</button>
+</form>
 <div style="height: 20px; background-color: blue">
   --------end--------
 </div>
