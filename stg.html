@@ -2,7 +2,8 @@
   --------start--------
 </div>
 <script src="https://sdk-stg.form.run/js/v2/formrun.js"></script>
-<form class="formrun" action="https://stg.form.run/api/v1/r/ngjgs5m4yvr620whm93wnl5s" method="post">
+<!-- class, action, methodを変更しないでください -->
+<form class="formrun" action="https://stg.form.run/api/v1/r/5hzpoy1umol3shgye8qw8zmt" method="post">
   <!-- ↓自由に要素を追加・編集することができます -->
   <div>
     <label>お名前</label>
@@ -17,18 +18,19 @@
 
   <div>
     <label>お問い合わせ [必須]</label>
-    <textarea name="question" data-formrun-required></textarea>
-    <div data-formrun-show-if-error="question">お問い合わせ内容を入力してください</div>
+    <textarea name="お問い合わせ" data-formrun-required></textarea>
+    <div data-formrun-show-if-error="お問い合わせ">お問い合わせ内容を入力してください</div>
   </div>
 
-  <div></div>
-    <label>Oneline [任意]</label>
-    <textarea name="oneline"></textarea>
-    <div data-formrun-show-if-error="oneline">お問い合わせ内容を入力してください</div>
+  <div>
+    <label>個人情報利用同意 [必須]</label>
+    <input type="checkbox" name="個人情報利用同意" data-formrun-required>
+    <div data-formrun-show-if-error="個人情報利用同意">同意してください</div>
   </div>
 
   <button type="submit" data-formrun-error-text="未入力の項目があります" data-formrun-submitting-text="送信中...">送信</button>
 </form>
+
 <div style="height: 20px; background-color: blue">
   --------end--------
 </div>
