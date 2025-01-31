@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   images.forEach(img => {
       let originalSrc = img.dataset.src;
-      compressImage(originalSrc, 0.5, (compressedSrc) => {
+      compressImage(originalSrc, 0.1, (compressedSrc) => {
           img.src = compressedSrc;
       });
 
@@ -24,8 +24,8 @@ function compressImage(imgUrl, quality, callback) {
       let canvas = document.createElement("canvas");
       let ctx = canvas.getContext("2d");
 
-      canvas.width = img.width / 2;
-      canvas.height = img.height / 2;
+      canvas.width = img.width / 10;
+      canvas.height = img.height / 10;
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
       let compressedSrc = canvas.toDataURL("image/jpeg", quality);
