@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Album Ảnh</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <h1>Album Ảnh</h1>
+  </header>
+
+  <main id="gallery" class="grid"></main>
+
+  <dialog id="lightbox">
+    <img id="lightbox-img" alt="" />
+    <button id="close">Đóng</button>
+  </dialog>
+
+  <script type="module">
+    const gallery = document.getElementById('gallery');
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const btnClose = document.getElementById('close');
+
+    const manifest = await fetch('../manifest.json').then(r => r.json());
+
+    const path = window.location.pathname; 
+    const tripName = path.split('/').slice(-2, -1)[0]; 
+
+    function sourcesBy(fmt, item) {
+      return item.sources
+        .filter(s => s.format === fmt)
+        .sort((a, b) => a.width - b.width);
+    }
+
+    for (const item of manifest[tripName]) {
+      const webps = sourcesBy('webp', item);
+      const jpgs = sourcesBy('jpg', item);
+      if (!webps.length || !jpgs.length) continue;
+
+      const smallestJpg = jpgs[0];
+      const originalSrc = item.original.toLowerCase().endsWith('.heic') ? jpgs[2].file : item.original;
+
+      const card = document.createElement('a');
+      card.href = item.original;
+      card.className = 'card';
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        lbImg.src = originalSrc;
+        lb.showModal();
+      });
+
+      const picture = document.createElement('picture');
+
+      const srcWebp = document.createElement('source');
+      srcWebp.type = 'image/webp';
+      srcWebp.srcset = webps.map(s => `${s.file} ${s.width}w`).join(', ');
+      srcWebp.sizes = '(max-width: 600px) 50vw, (max-width: 1200px) 33vw, 25vw';
+
+      const srcJpg = document.createElement('source');
+      srcJpg.type = 'image/jpeg';
+      srcJpg.srcset = jpgs.map(s => `${s.file} ${s.width}w`).join(', ');
+      srcJpg.sizes = srcWebp.sizes;
+
+      const img = document.createElement('img');
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.alt = item.id;
+      img.src = smallestJpg.file;
+
+      picture.appendChild(srcWebp);
+      picture.appendChild(srcJpg);
+      picture.appendChild(img);
+      card.appendChild(picture);
+      gallery.appendChild(card);
+    }
+
+    btnClose.addEventListener('click', () => lb.close());
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb) lb.close();
+    });
+  </script>
+</body>
+</html>

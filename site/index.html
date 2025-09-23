@@ -9,75 +9,21 @@
 <body>
   <header>
     <h1>Album Ảnh</h1>
-    <p>Ảnh gốc nằm trong repo; trang này dùng ảnh tối ưu để tải nhanh.</p>
   </header>
 
   <main id="gallery" class="grid"></main>
 
-  <dialog id="lightbox">
-    <img id="lightbox-img" alt="" />
-    <button id="close">Đóng</button>
-  </dialog>
-
   <script type="module">
     const gallery = document.getElementById('gallery');
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightbox-img');
-    const btnClose = document.getElementById('close');
-
     const manifest = await fetch('./manifest.json').then(r => r.json());
 
-    function sourcesBy(fmt, item) {
-      return item.sources
-        .filter(s => s.format === fmt)
-        .sort((a, b) => a.width - b.width);
-    }
-
-    for (const item of manifest) {
-      const webps = sourcesBy('webp', item);
-      const jpgs = sourcesBy('jpg', item);
-      if (!webps.length || !jpgs.length) continue;
-
-      const smallestJpg = jpgs[0];
-
+    for (const tripName of Object.keys(manifest)) {
       const card = document.createElement('a');
-      card.href = item.original;
-      card.className = 'card';
-      card.addEventListener('click', (e) => {
-        e.preventDefault();
-        lbImg.src = item.original;
-        lb.showModal();
-      });
-
-      const picture = document.createElement('picture');
-
-      const srcWebp = document.createElement('source');
-      srcWebp.type = 'image/webp';
-      srcWebp.srcset = webps.map(s => `${s.file} ${s.width}w`).join(', ');
-      srcWebp.sizes = '(max-width: 600px) 50vw, (max-width: 1200px) 33vw, 25vw';
-
-      const srcJpg = document.createElement('source');
-      srcJpg.type = 'image/jpeg';
-      srcJpg.srcset = jpgs.map(s => `${s.file} ${s.width}w`).join(', ');
-      srcJpg.sizes = srcWebp.sizes;
-
-      const img = document.createElement('img');
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      img.alt = item.id;
-      img.src = smallestJpg.file;
-
-      picture.appendChild(srcWebp);
-      picture.appendChild(srcJpg);
-      picture.appendChild(img);
-      card.appendChild(picture);
+      card.href = `${tripName}/index.html`;
+      card.textContent = tripName;
+      card.className = 'card-link';
       gallery.appendChild(card);
     }
-
-    btnClose.addEventListener('click', () => lb.close());
-    lb.addEventListener('click', (e) => {
-      if (e.target === lb) lb.close();
-    });
   </script>
 </body>
 </html>
