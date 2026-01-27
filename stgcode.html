@@ -9,21 +9,40 @@
   </div>
 
   <div>
-    <label>メールアドレス [必須]</label>
-    <input name="メールアドレス" type="text" data-formrun-type="email" data-formrun-required>
-    <div data-formrun-show-if-error="メールアドレス">メールアドレスを正しく入力してください</div>
+    <label>郵便番号</label>
+    <input
+      name="郵便番号"
+      type="text"
+      data-formrun-type="postal-code-jp"
+      placeholder="例：1000001 / 100-0001"
+    >
   </div>
 
   <div>
-    <label>お問い合わせ [必須]</label>
-    <textarea name="お問い合わせ" data-formrun-required></textarea>
-    <div data-formrun-show-if-error="お問い合わせ">お問い合わせ内容を入力してください</div>
+    <label>都道府県</label>
+    <input
+      name="都道府県"
+      type="text"
+      data-formrun-type="region"
+    >
   </div>
 
   <div>
-    <label>個人情報利用同意 [必須]</label>
-    <input type="checkbox" name="個人情報利用同意" data-formrun-required>
-    <div data-formrun-show-if-error="個人情報利用同意">同意してください</div>
+    <label>市区町村</label>
+    <input
+      name="市区町村"
+      type="text"
+      data-formrun-type="locality"
+    >
+  </div>
+
+  <div>
+    <label>町名</label>
+    <input
+      name="町名"
+      type="text"
+      data-formrun-type="street-address"
+    >
   </div>
 
   <button type="submit" data-formrun-error-text="未入力の項目があります" data-formrun-submitting-text="送信中...">送信</button>
