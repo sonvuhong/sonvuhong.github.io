@@ -1,5 +1,104 @@
 <script src="https://sdk-stg.form.run/js/v2/formrun.js"></script>
 
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 0;
+  }
+
+  .formrun {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    max-width: 450px;
+    width: 100%;
+  }
+
+  .formrun > div {
+    margin-bottom: 24px;
+  }
+
+  .formrun label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+  }
+
+  .formrun input[type="text"] {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: #f9fafb;
+  }
+
+  .formrun input[type="text"]:focus {
+    border-color: #667eea;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  }
+
+  .formrun input[type="text"]:hover {
+    border-color: #d1d5db;
+  }
+
+  .formrun [data-formrun-show-if-error] {
+    color: #ef4444;
+    font-size: 13px;
+    margin-top: 6px;
+    display: none;
+  }
+
+  .formrun [data-formrun-show-if-error].show {
+    display: block;
+  }
+
+  .formrun button[type="submit"] {
+    width: 100%;
+    padding: 16px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 8px;
+  }
+
+  .formrun button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  }
+
+  .formrun button[type="submit"]:active {
+    transform: translateY(0);
+  }
+
+  .formrun button[type="submit"]:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+</style>
+
 <!-- class, action, methodを変更しないでください -->
 <form class="formrun" action="https://stg.form.run/api/v1/r/rtebj59yyxgmxt2veaw1ff26" method="post">
   <!-- ↓自由に要素を追加・編集することができます -->
@@ -9,40 +108,9 @@
   </div>
 
   <div>
-    <label>郵便番号</label>
-    <input
-      name="郵便番号"
-      type="text"
-      data-formrun-type="postal-code-jp"
-      placeholder="例：1000001 / 100-0001"
-    >
-  </div>
-
-  <div>
-    <label>都道府県</label>
-    <input
-      name="都道府県"
-      type="text"
-      data-formrun-type="region"
-    >
-  </div>
-
-  <div>
-    <label>市区町村</label>
-    <input
-      name="市区町村"
-      type="text"
-      data-formrun-type="locality"
-    >
-  </div>
-
-  <div>
-    <label>町名</label>
-    <input
-      name="町名"
-      type="text"
-      data-formrun-type="street-address"
-    >
+    <label>メールアドレス [必須]</label>
+    <input name="メールアドレス" type="text" data-formrun-type="email" data-formrun-required>
+    <div data-formrun-show-if-error="メールアドレス">メールアドレスを正しく入力してください</div>
   </div>
 
   <button type="submit" data-formrun-error-text="未入力の項目があります" data-formrun-submitting-text="送信中...">送信</button>
