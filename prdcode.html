@@ -98,23 +98,24 @@
   }
 </style>
 
-<section class="contact-dot-wrap">
-  <div class="bg-gray-l pb64-pc">
-    <div class="contents-wrap section-wrap pt80-pc pb160-pc pt40-sp pb120-sp">
-      <form action="https://form.run/api/v1/r/flhpqumt2ms62kc58liw0dnn" method="post" class="formrun">
-        <div>
-          <label>お名前</label>
-          <input name="お名前" type="text">
-        </div>
-
-        <div>
-          <label>メールアドレス [必須]</label>
-          <input name="メールアドレス" type="text" data-formrun-type="email" data-formrun-required>
-          <div data-formrun-show-if-error="メールアドレス">メールアドレスを正しく入力してください</div>
-        </div>
-
-        <button type="submit" data-formrun-error-text="未入力の項目があります" data-formrun-submitting-text="送信中...">送信</button>
-      </form>
-    </div>
+<form action="https://form.run/api/v1/r/flhpqumt2ms62kc58liw0dnn" method="post" class="formrun">
+  <div>
+    <label>お名前</label>
+    <input name="お名前" type="text">
   </div>
-</section>
+
+  <div>
+    <label>メールアドレス [必須]</label>
+    <input name="メールアドレス" type="text" data-formrun-type="email" data-formrun-required>
+    <div data-formrun-show-if-error="メールアドレス">メールアドレスを正しく入力してください</div>
+  </div>
+
+  <button type="submit" 
+    data-formrun-error-text="エラーが発生しました"
+    data-formrun-submitting-text="送信中..."
+    data-formrun-not-input-error-text="未入力の項目があります"
+    data-formrun-invalid-input-error-text="入力内容に誤りがあります"
+  >
+    送信
+  </button>
+</form>
